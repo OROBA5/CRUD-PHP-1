@@ -1,5 +1,7 @@
 <?php
 
+// abstract class for the products
+
 abstract class Product {
 
     protected $id;
@@ -16,6 +18,78 @@ abstract class Product {
         $this->price = $price;
         $this->product_type_id = $product_type_id;
 
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function getProductTypeId()
+    {
+        return $this->product_type_id;
+    }
+
+    public function setProductTypeId($product_type_id)
+    {
+        $this->product_type_id = $product_type_id;
+    }
+
+    public function delete()
+    {
+        $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
+        $connection = $database->getConnection();
+
+        // Delete from product table
+        $query = "DELETE FROM product WHERE id = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("i", $this->id);
+        $stmt->execute();
+    }
+
+    public function display()
+    {
+        echo '<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">';
+        echo '<strong>Product ID:</strong> ' . $this->getId() . '<br>';
+        echo '<strong>SKU:</strong> ' . $this->getSku() . '<br>';
+        echo '<strong>Product Name:</strong> ' . $this->getName() . '<br>';
+        echo '<strong>Price:</strong> $' . $this->getPrice() . '<br>';
+        echo '</div>';
     }
 
 }

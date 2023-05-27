@@ -13,21 +13,114 @@ class furniture extends Product {
         $this->length = $length;
     }
 
+    
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setHeight($height)
+    {
+        $this->height = $height;
+    }
+
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    public function setWidth($width)
+    {
+        $this->width = $width;
+    }
+
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    public function setLength($length)
+    {
+        $this->length = $length;
+    }
+
     public function save() {
 
         $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
 
         $connection = $database->getConnection();
 
-        //insert into product table
-        $query = "INSERT INTO product (sku, name, price, product_type_id) VALUES ('$this->sku', '$this->name', '$this->price', $this->product_type_id)";
-        $connection->query($query);
+        // Insert into product table
+        $query = "INSERT INTO product (sku, name, price, product_type_id) VALUES (?, ?, ?, ?)";
+        $stmt = $connection->prepare($query);
+        $sku = $this->getSku();
+        $name = $this->getName();
+        $price = $this->getPrice();
+        $productTypeId = $this->getProductTypeId();
+        $stmt->bind_param("ssdi", $sku, $name, $price, $productTypeId);
+        $stmt->execute();
 
-        //Get the last inserted product id
-        $productId = $connection->insert_id;
+        // Get the last inserted product id
+        $productId = $stmt->insert_id;
 
-        //insert into book table
-        $furniturequery = "INSERT INTO furniture (product_id, height, width, length) VALUES ('$productId', '$this->height', '$this->width', '$this->length')";
-        $connection->query($furniturequery);
+        // Insert into dvd table
+        $furniturequery = "INSERT INTO furniture (product_id, height, width, length) VALUES (?, ?, ?, ?)";
+        $stmt = $connection->prepare($furniturequery);
+        $height = $this->getHeight();
+        $lenght = $this->getLength();
+        $width = $this->getWidth();
+        $stmt->bind_param("iiss", $productId, $height, $width, $lenght);
+
+        $stmt->execute();
+    }
+
+/*     public function delete()
+    {
+        $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
+        $connection = $database->getConnection();
+    
+        // Delete from furniture table
+        $furnitureQuery = "DELETE FROM furniture WHERE product_id = ?";
+        $stmt = $connection->prepare($furnitureQuery);
+        $productId = $this->getId();
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+
+        parent::delete(); // Call the delete method from the parent class (Product)
+    } */
+
+    // Delete from furniture table
+    public function deleteSpecificRow()
+    {
+        $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
+        $connection = $database->getConnection();
+
+        // Delete from furniture table
+        $furnitureQuery = "DELETE FROM furniture WHERE product_id = ?";
+        $stmt = $connection->prepare($furnitureQuery);
+        $productId = $this->getId();
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+    }
+
+    public function delete()
+    {
+        parent::delete(); // Call the delete method from the parent class (Product)
+    }
+    
+
+    public function display()
+    {
+        echo '<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">';
+        echo '<input type="checkbox" name="selected_products[]" value="' . $this->getId() . '">';
+        echo '<strong>Product Type:</strong> Furniture<br>';
+        echo '<strong>Product Name:</strong> ' . $this->getName() . '<br>';
+        echo '<strong>SKU:</strong> ' . $this->getSku() . '<br>';
+        echo '<strong>Price:</strong> $' . $this->getPrice() . '<br>';
+        echo '<strong>Height:</strong> ' . $this->getHeight() . '<br>';
+        echo '<strong>Lenght:</strong> ' . $this->getLength() . '<br>';
+        echo '<strong>Width:</strong> ' . $this->getWidth() . '<br>';
+        echo '</div>';
     }
 }
