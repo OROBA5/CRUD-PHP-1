@@ -90,8 +90,9 @@ class furniture extends Product {
         parent::delete(); // Call the delete method from the parent class (Product)
     } */
 
-    // Delete from furniture table
-    public function deleteSpecificRow()
+
+
+    public function delete()
     {
         $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
         $connection = $database->getConnection();
@@ -102,10 +103,6 @@ class furniture extends Product {
         $productId = $this->getId();
         $stmt->bind_param("i", $productId);
         $stmt->execute();
-    }
-
-    public function delete()
-    {
         parent::delete(); // Call the delete method from the parent class (Product)
     }
     

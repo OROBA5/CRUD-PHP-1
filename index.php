@@ -1,6 +1,6 @@
 <?php
 
-include '../Product/listproducts.php';
+include './Product/listproducts.php';
 
 $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
 
@@ -12,7 +12,8 @@ $listProducts = new ListProducts($database);
 ?>
 
 <div>
-    <form method="POST" action="../Product/deleteProducts.php">
+    <button><a href="./addProduct.html">Add</a></button>
+    <form method="POST" action="./Product/deleteProducts.php">
     <input type="submit" value="Delete Selected Products">
         <?php
         // Step 3: Get the products

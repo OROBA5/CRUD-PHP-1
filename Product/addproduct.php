@@ -26,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($product instanceof Product) {
         $product->save();
-        echo ucfirst($type) . " saved successfully!";
+        
+        // Redirect back to the listProducts.php page after deletion
+        header("Location: ../index.php");
     } else {
         echo "Invalid product type!";
     }

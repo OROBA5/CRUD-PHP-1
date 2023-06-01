@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add a product</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
+    <script src="index.js"></script>
+</head>
+<body>
+    <form method="post" action="./Product/addproduct.php" onsubmit="return validateForm(event);">
+
+        <div>
+            <h1> Add a Product</h1>
+            <input type="submit" value="Save">
+            <button><a href="./index.php">Cancel</a></button>
+        </div>
+
+        <div id="warning" style="color: red; display: none;"></div>
+
+        <label for="sku">SKU:</label>
+        <input type="text" name="sku" id="sku" >
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" >
+
+        <label for="price">Price($):</label>
+        <input type="text" name="price" id="price" >
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="">Select a type</option>
+            <option value="book">Book</option>
+            <option value="dvd">DVD</option>
+            <option value="furniture">Furniture</option>
+        </select>
+
+        <div id="book-fields" class="hidden">
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+        </div>
+
+        <div id="dvd-fields" class="hidden">
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size">
+        </div>
+
+        <div id="furniture-fields" class="hidden">
+            <label for="height">Height:</label>
+            <input type="text" id="height" name="height">
+
+            <label for="width">Width:</label>
+            <input type="text" id="width" name="width">
+
+            <label for="length">Length:</label>
+            <input type="text" id="length" name="length">
+        </div>
+    </form>
+</body>
+

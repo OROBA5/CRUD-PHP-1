@@ -29,21 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productTypeId = $row['product_type_id'];
 
             // Delete the product based on its type using ternary operators
-            $product = ($productTypeId === '1')
+            $product = ($productTypeId === '3')
                 ? new Book($productId, '', '', 0, 0, 0)
-                : (($productTypeId === '2')
+                : (($productTypeId === '1')
                     ? new DVD($productId, '', '', 0, 0, 0)
-                    : (($productTypeId === '3')
+                    : (($productTypeId === '2')
                         ? new Furniture($productId, '', '', 0, 0, 0, 0, 0)
                         : throw new Exception('Invalid product type: ' . $productTypeId)));
 
             // Delete the product
-            $product->deleteSpecificRow();
             $product->delete();
         }
     }
 
     // Redirect back to the listProducts.php page after deletion
-    header("Location: listProducts.php");
+    header("Location: ../index.php");
     exit();
 }
