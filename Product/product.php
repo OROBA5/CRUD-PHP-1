@@ -3,13 +3,14 @@
 // abstract class for the products
 
 abstract class Product {
-
+    // declare primary product fields
     protected $id;
     protected $sku;
     protected $name;
     protected $price;
     protected $product_type_id;
 
+    //declares constructor for products
     public function __construct($id, $sku, $name, $price, $product_type_id)
     {
         $this->id = $id;
@@ -20,6 +21,7 @@ abstract class Product {
 
     }
 
+    //setters and getters
     public function setId($id)
     {
         $this->id = $id;
@@ -70,6 +72,7 @@ abstract class Product {
         $this->product_type_id = $product_type_id;
     }
 
+    //utilises delete funcion for deleting a product
     public function delete()
     {
         $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
@@ -82,6 +85,7 @@ abstract class Product {
         $stmt->execute();
     }
 
+    //utilises display funcionality for a product
     public function display()
     {
         echo '<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">';

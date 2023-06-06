@@ -5,6 +5,7 @@ include 'book.php';
 include 'dvd.php';
 include 'furniture.php';
 
+//creates a database connection
 $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
 $connection = $database->getConnection();
 

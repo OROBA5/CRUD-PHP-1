@@ -13,9 +13,11 @@ class ListProducts {
         $this->database = $database;
     }
 
+    //retrieve products from database
     public function getProducts() {
         $connection = $this->database->getConnection();
     
+        //select all prodcut data from database
         $query = "SELECT p.*, b.weight, d.size, f.height, f.width, f.length
                   FROM product p
                   LEFT JOIN book b ON p.id = b.product_id
@@ -33,7 +35,7 @@ class ListProducts {
         return $products;
     }
     
-
+    //using ternary operators create product display based on the product type
     private function createProductFromRow($row) {
         $productType = $this->getProductTypeById($row['product_type_id']);
     
@@ -49,7 +51,7 @@ class ListProducts {
     
     
     
-
+    //retrieves a name of a product type from database for createProductFromRow()
     private function getProductTypeById($productTypeId) {
         $connection = $this->database->getConnection();
     
@@ -71,7 +73,7 @@ class ListProducts {
     
     
     
-
+    //creates product type specific objects
     private function createBookFromRow($row) {
         return new Book(
             $row['id'],

@@ -2,18 +2,23 @@
 <html>
 <head>
     <title>Add a product</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="./index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
-    <script src="index.js"></script>
+    <script src="./index.js"></script>
 </head>
 <body>
-    <form method="post" action="./Product/addproduct.php" onsubmit="return validateForm(event);">
+    <form method="post" action="./Product/addproduct.php" id="product_form" onsubmit="return validateForm()">
 
-        <div>
+        <div class="navbar">
             <h1> Add a Product</h1>
-            <input type="submit" value="Save">
+            <div class="inner-navbar">
+          <!-- <input type="submit" value="Save"> -->
+            <button type="submit"><input type="submit" class="submit-button" value="">Save</button>
             <button><a href="./index.php">Cancel</a></button>
+            </div>
         </div>
+
+        <div class="add-product">
 
         <div id="warning" style="color: red; display: none;"></div>
 
@@ -27,13 +32,14 @@
         <input type="text" name="price" id="price" >
 
         <label for="type">Type:</label>
-        <select id="type" name="type" required>
+        <select id="productType" name="type" required>
             <option value="">Select a type</option>
             <option value="book">Book</option>
             <option value="dvd">DVD</option>
             <option value="furniture">Furniture</option>
         </select>
 
+        <!-- product specific fields -->
         <div id="book-fields" class="hidden">
             <label for="weight">Weight:</label>
             <input type="text" id="weight" name="weight">
@@ -55,5 +61,7 @@
             <input type="text" id="length" name="length">
         </div>
     </form>
+</div>
+</div>
 </body>
 

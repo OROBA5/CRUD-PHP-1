@@ -1,10 +1,13 @@
 <?php
 
+//furniture subclass for product, deeper code documentation in book class
 class furniture extends Product {
+    // declare furniture specific field
     public $height;
     public $width;
     public $length;
 
+    //declares constructor for the furniture class
     public function __construct($id, $sku, $name, $price, $product_type_id, $height, $width, $length)
     {
         parent::__construct($id, $sku, $name, $price, $product_type_id);
@@ -14,7 +17,7 @@ class furniture extends Product {
     }
 
     
-
+    //setters and getters for the class specific fields
     public function getHeight()
     {
         return $this->height;
@@ -45,6 +48,7 @@ class furniture extends Product {
         $this->length = $length;
     }
 
+    //utilises save funcion for saving new product
     public function save() {
 
         $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
@@ -75,23 +79,7 @@ class furniture extends Product {
         $stmt->execute();
     }
 
-/*     public function delete()
-    {
-        $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
-        $connection = $database->getConnection();
-    
-        // Delete from furniture table
-        $furnitureQuery = "DELETE FROM furniture WHERE product_id = ?";
-        $stmt = $connection->prepare($furnitureQuery);
-        $productId = $this->getId();
-        $stmt->bind_param("i", $productId);
-        $stmt->execute();
-
-        parent::delete(); // Call the delete method from the parent class (Product)
-    } */
-
-
-
+    //utilises delete funcion for deleting a product
     public function delete()
     {
         $database = new Database('localhost', 'root', '', 'juniordev.liga.lomakina');
@@ -106,17 +94,17 @@ class furniture extends Product {
         parent::delete(); // Call the delete method from the parent class (Product)
     }
     
-
+    //utilises display funcionality for a product
     public function display()
     {
-        echo '<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">';
-        echo '<input type="checkbox" name="selected_products[]" value="' . $this->getId() . '">';
+        echo '<div class="product">';
+        echo '<input class="delete-checkbox" type="checkbox" name="selected_products[]" value="' . $this->getId() . '">';
         echo '<strong>Product Type:</strong> Furniture<br>';
         echo '<strong>Product Name:</strong> ' . $this->getName() . '<br>';
         echo '<strong>SKU:</strong> ' . $this->getSku() . '<br>';
         echo '<strong>Price:</strong> $' . $this->getPrice() . '<br>';
         echo '<strong>Height:</strong> ' . $this->getHeight() . '<br>';
-        echo '<strong>Lenght:</strong> ' . $this->getLength() . '<br>';
+        echo '<strong>Length:</strong> ' . $this->getLength() . '<br>';
         echo '<strong>Width:</strong> ' . $this->getWidth() . '<br>';
         echo '</div>';
     }
