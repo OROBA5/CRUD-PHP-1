@@ -99,13 +99,11 @@ class furniture extends Product {
     {
         echo '<div class="product">';
         echo '<input class="delete-checkbox" type="checkbox" name="selected_products[]" value="' . $this->getId() . '">';
-        echo '<strong>Product Type:</strong> Furniture<br>';
-        echo '<strong>Product Name:</strong> ' . $this->getName() . '<br>';
-        echo '<strong>SKU:</strong> ' . $this->getSku() . '<br>';
-        echo '<strong>Price:</strong> $' . $this->getPrice() . '<br>';
-        echo '<strong>Height:</strong> ' . $this->getHeight() . '<br>';
-        echo '<strong>Length:</strong> ' . $this->getLength() . '<br>';
-        echo '<strong>Width:</strong> ' . $this->getWidth() . '<br>';
+        echo '<p><strong>Product Type:</strong> Furniture</p>';
+        echo '<p><strong>Product Name:</strong> ' . $this->getName() . '</p>';
+        echo '<p><strong>SKU:</strong> ' . $this->getSku() . '</p>';
+        echo '<p><strong>Price:</strong> ' . $this->getPrice() . ' $ </p>';
+        echo '<p><strong>Dimentions:</strong> ' . $this->getHeight() . 'x' . $this->getLength() . 'x' . $this->getWidth() . '</p>';
         echo '</div>';
     }
 }

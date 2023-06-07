@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $product->save();
         
         // Redirect back to index.php page after saving the product
-        header("Location: ../index.php");
+        header("Location: ../index");
     } else {
         echo "Invalid product type!";
     }

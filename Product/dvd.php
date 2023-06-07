@@ -69,11 +69,11 @@ class DVD extends Product {
     {
         echo '<div class="product">';
         echo '<input class="delete-checkbox" type="checkbox" name="selected_products[]" value="' . $this->getId() . '">';
-        echo '<strong>Product Type:</strong> DVD<br>';
-        echo '<strong>Product Name:</strong> ' . $this->getName() . '<br>';
-        echo '<strong>SKU:</strong> ' . $this->getSku() . '<br>';
-        echo '<strong>Price:</strong> $' . $this->getPrice() . '<br>';
-        echo '<strong>Duration:</strong> ' . $this->getSize() . ' minutes<br>';
+        echo '<p><strong>Product Type:</strong>  DVD </p>';
+        echo '<p><strong>Product Name:</strong> ' . $this->getName() . ' </p>';
+        echo '<p><strong>SKU:</strong> ' . $this->getSku() . '</p> ';
+        echo '<p><strong>Price:</strong> ' . $this->getPrice() . ' $ </p> ';
+        echo '<p><strong>Duration:</strong> ' . $this->getSize() . ' minutes</p>';
         echo '</div>';
     }
 }

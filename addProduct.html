@@ -6,15 +6,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
     <script src="./index.js"></script>
 </head>
-<body>
-    <form method="post" action="./Product/addproduct.php" id="product_form" onsubmit="return validateForm()">
+<body class="add">
+    <form method="post" action="./Product/addproduct" id="product_form" onsubmit="return validateForm()">
 
         <div class="navbar">
             <h1> Add a Product</h1>
             <div class="inner-navbar">
           <!-- <input type="submit" value="Save"> -->
             <button type="submit"><input type="submit" class="submit-button" value="">Save</button>
-            <button><a href="./index.php">Cancel</a></button>
+            <button><a href="./index">Cancel</a></button>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
         <label for="price">Price($):</label>
         <input type="text" name="price" id="price" >
 
-        <label for="type">Type:</label>
+        <label for="type">Product type:</label>
         <select id="productType" name="type" required>
             <option value="">Select a type</option>
             <option value="book">Book</option>
@@ -41,27 +41,33 @@
 
         <!-- product specific fields -->
         <div id="book-fields" class="hidden">
-            <label for="weight">Weight:</label>
+            <h5>Please, provide weight</h5>
+            <label for="weight">Weight(KG):</label>
             <input type="text" id="weight" name="weight">
         </div>
 
         <div id="dvd-fields" class="hidden">
-            <label for="size">Size:</label>
+            <h5>Please, provide size</h5>
+            <label for="size">Size(MB):</label>
             <input type="text" id="size" name="size">
         </div>
 
         <div id="furniture-fields" class="hidden">
-            <label for="height">Height:</label>
+            <h5>Please, provide dimensions</h5>
+            <label for="height">Height(CM):</label>
             <input type="text" id="height" name="height">
 
-            <label for="width">Width:</label>
+            <label for="width">Width(CM):</label>
             <input type="text" id="width" name="width">
 
-            <label for="length">Length:</label>
+            <label for="length">Length(CM):</label>
             <input type="text" id="length" name="length">
         </div>
     </form>
 </div>
 </div>
+<footer class="add-footer">
+    <h3> Scandiweb Test assignment</h3>
+  </footer>
 </body>
 

@@ -21,7 +21,7 @@ $listProducts = new ListProducts($database);
     <div class="navbar">
     <h1> Product list</h1>
     <div class="inner-navbar">
-    <button><a href="./addProduct.html">ADD</a></button>
+    <button><a href="./addProduct">ADD</a></button>
     <form method="POST" action="./Product/deleteProducts.php">
     <button type="submit"><input type="submit"  class="submit-button" value="">MASS DELETE</button>
     </div>
@@ -39,3 +39,6 @@ $listProducts = new ListProducts($database);
     </div>
     </form>
 </div>
+<footer>
+    <h3> Scandiweb Test assignment</h3>
+  </footer>

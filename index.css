@@ -1,8 +1,15 @@
 .hidden {
-    display: none;
+    display: none!important;
 }
 
 body {
+    background: linear-gradient(to bottom, #474168, #272637);
+    margin: 0;
+    
+
+}
+
+.add {
     background: linear-gradient(to bottom, #474168, #272637);
     margin: 0;
     height: 100vh;
@@ -56,8 +63,74 @@ button {
     border: 1px solid #626f92;
     border-radius: 10px;
     padding: 25px;
+    text-align: center;
+    
+}
+
+.product strong {
+    color: #b7b7b7;
+}
+
+.product p {
+    color: #fae3e3;
 }
 
 .submit-button {
     display: none;
+}
+
+h1 {
+    color: #3d0240;
+}
+
+label {
+    color: #b7b7b7;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+#book-fields, #dvd-fields, #furniture-fields {
+    display: grid;
+}
+
+h5 {
+    color: #fae3e3;
+    font-size: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #272637;
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #272637;
+}
+
+.delete-checkbox {
+    display: flex;
+}
+
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #b7b7b7;
+    border-top: 1px solid #b7b7b7;
+    margin-top: 25px;
+}
+
+button {
+    color: #fae3e3;
+    background-color: #626f92;
+    border: #626f92;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #fae3e3;
 }

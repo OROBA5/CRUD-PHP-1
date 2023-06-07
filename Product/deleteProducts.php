@@ -44,6 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirect back to the listProducts.php page after deletion
-    header("Location: ../index.php");
+    header("Location: ../index");
     exit();
 }
