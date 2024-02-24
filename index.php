@@ -40,5 +40,5 @@ $listProducts = new ListProducts($database);
     </form>
 </div>
 <footer>
-    <h3> Scandiweb Test assignment</h3>
+    <h3> CRUD</h3>
   </footer>
